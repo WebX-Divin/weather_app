@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class WeatherScreen extends StatelessWidget {
@@ -13,7 +12,7 @@ class WeatherScreen extends StatelessWidget {
         title: const Text(
           'Weather App',
           style: TextStyle(
-            fontSize: 28,
+            fontSize: 26,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -21,7 +20,7 @@ class WeatherScreen extends StatelessWidget {
         actions: [
           GestureDetector(
             child: const Icon(Icons.refresh, 
-            size: 32
+            size: 30
             ),
           )
         ],
@@ -75,8 +74,37 @@ class WeatherScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 15),
             //secondary card
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Weather Forecast',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+            const Row(
+              children: [
+                SizedBox(
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Text('21:00',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
             const Placeholder(
               fallbackHeight: 150,
             ),
