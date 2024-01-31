@@ -11,22 +11,23 @@ class WeatherScreen extends StatelessWidget {
         title: const Text(
           'Weather App',
           style: TextStyle(
-            fontSize: 28,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
         actions: [
           GestureDetector(
-            child: const Icon(Icons.refresh, size: 32),
+            child: const Icon(Icons.refresh, size: 30),
           )
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          //main card
           children: [
-            //main card
             SizedBox(
               width: double.infinity,
               child: Card(
@@ -41,7 +42,7 @@ class WeatherScreen extends StatelessWidget {
                       sigmaY: 20,
                     ),
                     child: const Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(16.0),
                       child: Column(
                         children: [
                           Text(
@@ -69,8 +70,45 @@ class WeatherScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 15),
             //secondary card
+            const Text(
+              'Weather Forecast',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 15),
+            const Row(
+              children: [
+                SizedBox(
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Text(
+                          '21:00',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Icon(Icons.cloud),
+                        SizedBox(height: 8),
+                        Text(
+                          'Cloudy',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
             const Placeholder(
               fallbackHeight: 150,
             ),
