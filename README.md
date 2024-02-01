@@ -1,16 +1,6 @@
-# weather_app
+# Weather App
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- For optimized code, visit flutLab branch
+- If you want to convert your code to apk, then download the code and move to the code directory in your system
+- Type `flutter build apk` in your terminal
+- Once the build process is finished, you can find your apk in build folder in your system
