@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:weather_app/additionalinfoItem.dart';
+import 'package:weather_app/hourly_forecase.dart';
 
 class WeatherScreen extends StatelessWidget {
   const WeatherScreen({super.key});
@@ -76,6 +78,7 @@ class WeatherScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 25),
+
             //secondary card
             const Align(
               alignment: Alignment.centerLeft,
@@ -92,19 +95,35 @@ class WeatherScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  HourlyForecast(),
-                  HourlyForecast(),
-                  HourlyForecast(),
-                  HourlyForecast(),
-                  HourlyForecast(),
+                  HourlyForecast(time: '02:00', icon: Icons.cloud, temperature: '28°C'),
+                  HourlyForecast(time: '04:00', icon: Icons.cloud, temperature: '30°C'),
+                  HourlyForecast(time: '06:00', icon: Icons.cloud, temperature: '27°C'),
+                  HourlyForecast(time: '08:00', icon: Icons.cloud, temperature: '29°C'),
+                  HourlyForecast(time: '10:00', icon: Icons.cloud, temperature: '31°C'),
                 ],
               ),
             ),
-            
             const SizedBox(height: 25),
+
             //third card
-            const Placeholder(
-              fallbackHeight: 150,
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Additional Information', 
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+              ),
+              ),
+            ),
+            const SizedBox(height: 6),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                additionalInfoItem(tempData: '87', icon: Icons.water_drop, temperature: 'Humidity',),
+                additionalInfoItem(tempData: '7.66', icon: Icons.air, temperature: 'Wind Speed',),
+                additionalInfoItem(tempData: '1007', icon: Icons.beach_access, temperature: 'Pressure',),
+              ],
             ),
           ],
         ),
@@ -113,43 +132,3 @@ class WeatherScreen extends StatelessWidget {
   }
 }
 
-class HourlyForecast extends StatelessWidget {
-  const HourlyForecast({
-    super.key
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        width: 100,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        padding: const EdgeInsets.all(8.0),
-        child: const Column(
-          children: [
-            Text(
-              '21:00',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-            SizedBox(height: 8),
-            Icon(Icons.cloud),
-            SizedBox(height: 8),
-            Text(
-              'Cloudy',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
