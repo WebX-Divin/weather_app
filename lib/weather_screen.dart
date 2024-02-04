@@ -89,9 +89,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
               child: Text(snapshot.error.toString()),
             );
           }
+        
 
           final data = snapshot.data!;
-          final currentTemp = data['list'][0]['main']['temp'];
+          final currentTemp = (data['list'][0]['main']['temp'] - 273.15).toStringAsFixed(2);
           final currentSky = data['list'][0]['weather'][0]['main'];
           final currentHumidity = data['list'][0]['main']['humidity'];
           final currentPressure = data['list'][0]['main']['pressure'];
@@ -122,14 +123,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           child: Column(
                             children: [
                               Text(
-                                '$currentTemp K' ,
+                                '$currentTemp°C' ,
                                 style: const TextStyle(
                                   fontSize: 38,
                                   fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Icon(
-                                  currentSky == 'Clouds' || currentSky == 'Rain' ? 
+                                  currentSky == 'Clouds' || currentSky == 'Clear' ? 
                                   Icons.cloud : Icons.sunny,  
                                   size: 64,
                                 ),
@@ -183,13 +184,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         final hourlyForecast = data['list'][index+1];
-                        final hourlyTemp = hourlyForecast['main']['temp'].toString();
+                        final hourlyTemp = (hourlyForecast['main']['temp']- 273.15).toStringAsFixed(2).toString();
                         final hourlySky = data['list'][index+1]['weather'][0]['main'];
                         final time = DateTime.parse(hourlyForecast['dt_txt']);
                         return HourlyForecast(
                             time: DateFormat.Hm().format(time), 
-                            icon:  hourlySky == 'Clouds' || hourlySky == 'Rain' ? Icons.cloud : Icons.sunny, 
-                            temperature: hourlyTemp,
+                            icon:  hourlySky == 'Clouds' || hourlySky == 'Clear' ? 
+                            Icons.cloud : Icons.sunny, 
+                            temperature: '$hourlyTemp°C',
                           );
                       },
                     ),
@@ -231,6 +233,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 ],
               ),
             );
+            
         }
       ),
     );
