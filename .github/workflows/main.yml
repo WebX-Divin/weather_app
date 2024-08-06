@@ -78,7 +78,7 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add version.txt
           git commit -m "Bump version to ${{ env.NEW_VERSION }}"
-          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }} HEAD:flutLab
+          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }} HEAD:main
 
       - name: Create GitHub Release
         id: create_release
